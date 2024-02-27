@@ -10,9 +10,7 @@
             <div class="card-body">
 
                 <div v-if="isLoading">
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
+                    <Loading :title="isLoadingTitle" />
                 </div>
 
                 <form @submit.prevent="saveStudent">
@@ -53,7 +51,7 @@ export default {
                 phone: '' 
             },
             isLoading: false,
-            isLoadingTitle: 'Loading...'
+            isLoadingTitle: "Loading..."
         }
     },
     methods: {
