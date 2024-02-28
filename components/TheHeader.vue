@@ -11,6 +11,9 @@ import { NuxtLink } from '#build/components';
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
+                        <NuxtLink class="nav-link" to="/students">View Students</NuxtLink>
+                    </li>
+                    <li class="nav-item">
                         <NuxtLink class="nav-link" to="/">Home</NuxtLink>
                     </li>
                     <li class="nav-item">
