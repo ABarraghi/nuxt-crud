@@ -33,7 +33,7 @@
                             <td>{{ student.created_at }}</td>
                             <td>
                                 <NuxtLink :to="`/students/${student.id}`" class="btn btn-success btn-sm mx-2">Edit</NuxtLink>
-                                <button type="button" class="btn btn-danger btn-sm mx-2">Delete</button>
+                                <button type="button" @click="deleteStudent($event, student.id)" class="btn btn-danger btn-sm mx-2">Delete</button>
                             </td>
                         </tr>
                     </tbody>
@@ -73,6 +73,22 @@ import axios from 'axios';
                     this.students = res.data.students;
 
                 });
+            },
+
+            deleteStudent(event, studentId){
+
+                if(confirm('Are you sure you want to delete this student?')){
+
+                    event.target.innerText = "Deleting...";
+
+                    axios.delete(`http://localhost:8000/api/students/${studentId}/delete`).then(res => {
+
+                        event.target.innerText = "Delete";
+                        this.getStudents();
+                        
+                    });
+                }
+
             }
 
         }
