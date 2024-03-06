@@ -41,12 +41,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <h4 id="aws-tester">Hello</h4>
     </div>  
 </template>
 
 <script>
 
 import axios from 'axios';
+
 
     export default{
         name: "student",
@@ -59,6 +63,7 @@ import axios from 'axios';
         mounted() {
 
             this.getStudents();
+            this.testAWS();
 
         },
         methods: {
@@ -88,6 +93,18 @@ import axios from 'axios';
                         
                     });
                 }
+
+            }, 
+
+            testAWS(){
+
+                axios.get(`https://m2elsjywa7.execute-api.us-east-1.amazonaws.com/`).then(res => {
+
+                    console.log(res);
+                    $("#aws-tester").html(res.data.name);
+                    alert(`Hello ${res.data.name}`);
+
+                });
 
             }
 
